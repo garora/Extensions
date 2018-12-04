@@ -57,6 +57,12 @@
     <LatestPackageReference Include="Microsoft.Build.Utilities.Core" Version="15.8.166" />
   </ItemGroup>
 
+  <!-- These versions mustn't be renamed because they over-ride the implicite package references from Arcade. -->
+  <PropertyGroup Label="External dependency versions">
+    <XUnitVersion>2.4.0</XUnitVersion>
+    <XUnitRunnerVisualStudioVersion>$(XUnitVersion)</XUnitRunnerVisualStudioVersion>
+  </PropertyGroup>
+
   <ItemGroup Label="External dependencies">
     <LatestPackageReference Include="BenchmarkDotNet" Version="0.10.13" />
     <LatestPackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.6" />
@@ -74,19 +80,18 @@
     <LatestPackageReference Include="Serilog.Extensions.Logging" Version="1.4.0" />
     <LatestPackageReference Include="Serilog.Sinks.File" Version="4.0.0" />
     <LatestPackageReference Include="StackExchange.Redis" Version="2.0.513" />
-    <LatestPackageReference Include="xunit.abstractions" Version="2.0.1" />
+    <LatestPackageReference Include="xunit.abstractions" Version="2.0.3" />
     <LatestPackageReference Include="xunit.analyzers" Version="0.10.0" />
-    <LatestPackageReference Include="xunit.assert" Version="2.3.1" />
-    <LatestPackageReference Include="xunit.extensibility.core" Version="2.3.1" />
-    <LatestPackageReference Include="xunit.extensibility.execution" Version="2.3.1" />
-    <LatestPackageReference Include="xunit" Version="2.4.0" />
+    <LatestPackageReference Include="xunit.assert" Version="$(XUnitVersion)" />
+    <LatestPackageReference Include="xunit.extensibility.core" Version="$(XUnitVersion)" />
+    <LatestPackageReference Include="xunit.extensibility.execution" Version="$(XUnitVersion)" />
+    <LatestPackageReference Include="xunit.runner.visualstudio" Version="$(XUnitRunnerVisualStudioVersion)" />
+    <LatestPackageReference Include="xunit" Version="$(XUnitVersion)" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(IsTestProject)' == 'true' ">
     <Reference Include="Microsoft.AspNetCore.Testing" />
     <Reference Include="Moq" />
-    <ReferenceFromRuntime Include="xunit" />
     <Reference Include="xunit.analyzers" />
-    <ReferenceFromRuntime Include="xunit.runner.visualstudio" />
   </ItemGroup>
 </Project>

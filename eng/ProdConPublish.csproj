@@ -1,5 +1,5 @@
 <Project DefaultTargets="Publish">
-  <!-- <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" /> -->
+  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
 
   <PropertyGroup>
     <!-- This is just a dummy project to publish files. It doesn't actually compile a netcoreapp2.1 project, but this properties are necessary to make /t:Restore work. -->
